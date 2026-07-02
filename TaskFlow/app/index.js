@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
 import { FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
+import { router } from "expo-router";
 import Toast from 'react-native-toast-message';
+
 
 import AddTaskModal from '../components/AddTaskModal';
 import TaskItem from '../components/TaskItem';
@@ -75,20 +77,65 @@ export default function HomeScreen() {
 
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
-        <View>
-          <Text style={styles.title}>TaskFlow</Text>
-          <Text style={styles.subtitle}>Keep today moving.</Text>
-        </View>
+     <View style={styles.header}>
+  <View>
+    <Text style={styles.title}>TaskFlow</Text>
+    <Text style={styles.subtitle}>Keep today moving.</Text>
+  </View>
 
-        <TouchableOpacity
-          style={styles.addButton}
-          onPress={() => setModalVisible(true)}
-          activeOpacity={0.8}
-        >
-          <MaterialIcons name="add" size={26} color="#fff" />
-        </TouchableOpacity>
-      </View>
+  <View>
+    <TouchableOpacity
+      style={styles.addButton}
+      onPress={() => setModalVisible(true)}
+      activeOpacity={0.8}
+    >
+      <MaterialIcons name="add" size={26} color="#fff" />
+    </TouchableOpacity>
+
+    <TouchableOpacity
+      style={{
+        marginTop: 10,
+        backgroundColor: "#2E5BBA",
+        padding: 10,
+        borderRadius: 8,
+      }}
+      onPress={() => router.push("/camera")}
+    >
+      <Text style={{ color: "#fff", fontWeight: "bold" }}>
+        Open Camera
+      </Text>
+    </TouchableOpacity>
+  </View>
+</View><View style={styles.header}>
+  <View>
+    <Text style={styles.title}>TaskFlow</Text>
+    <Text style={styles.subtitle}>Keep today moving.</Text>
+  </View>
+
+  <View>
+    <TouchableOpacity
+      style={styles.addButton}
+      onPress={() => setModalVisible(true)}
+      activeOpacity={0.8}
+    >
+      <MaterialIcons name="add" size={26} color="#fff" />
+    </TouchableOpacity>
+
+    <TouchableOpacity
+      style={{
+        marginTop: 10,
+        backgroundColor: "#2E5BBA",
+        padding: 10,
+        borderRadius: 8,
+      }}
+      onPress={() => router.push("/camera")}
+    >
+      <Text style={{ color: "#fff", fontWeight: "bold" }}>
+        Open Camera
+      </Text>
+    </TouchableOpacity>
+  </View>
+</View>
 
       <FlatList
         style={styles.list}
